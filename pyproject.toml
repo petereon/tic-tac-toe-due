@@ -63,8 +63,8 @@ numpy = "^1.22.2"
 black = { version = "*", allow-prereleases = true }
 mypy = "^0.942"
 
-# Expect Pattern Testing
-expects = "^0.9.0"
+# Expect Pattern Testing (shameless self-promotion)
+expycted = "0.4.0"
 
 # Pytest: Unit Testing
 pytest = "^6.0.0"
