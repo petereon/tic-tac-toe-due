@@ -1,15 +1,9 @@
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v2.3.0
-  hooks:
-  -   id: end-of-file-fixer
-  -   id: trailing-whitespace
-
 - repo: local
   hooks:
-    - id: test-hook
-      name: Run Pytest with Linters
-      entry: bash -c 'poe test-lint'
+    - id: formatter
+      name: Run Black formatter
+      entry: bash -c 'poe format'
       language: system
 
 - repo: https://github.com/compilerla/conventional-pre-commit
