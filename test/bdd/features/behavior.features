@@ -1,6 +1,5 @@
 Feature: Making a move
 
-
     Scenario: Player makes a valid move
         Given a game is in progress
         And the player is "X"
@@ -17,7 +16,7 @@ Feature: Making a move
         Then game notifies player the square is occupied
         And the game does not break
         And state of game does not change
-        And player is still "X"
+        And the player is "X"
 
     Scenario: Player tries to make a move out of board
         Given a game is in progress
@@ -26,4 +25,4 @@ Feature: Making a move
         Then game notifies player the square [3, 3] does not exist
         And the game does not break
         And state of game does not change
-        And player is still "X"
+        And the player is "X"
