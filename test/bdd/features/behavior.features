@@ -2,27 +2,27 @@ Feature: Making a move
 
     Scenario: Player makes a valid move
         Given a game is in progress
-        And the player is "X"
+        And the current player is X
         And square [0,1] is unoccupied
         When player makes a move at [0,1]
-        Then square [0,1] is occupied by "X"
-        And the player is "O"
+        Then square [0,1] is occupied by X
+        And the current player is O
 
     Scenario: Player tries to make an invalid move
         Given a game is in progress
-        And the player is "X"
+        And the player is X
         And square [1,1] is occupied
         When player makes a move at [1,1]
         Then game notifies player the square is occupied
         And the game does not break
         And state of game does not change
-        And the player is "X"
+        And the player is X
 
     Scenario: Player tries to make a move out of board
         Given a game is in progress
-        And the player is "X"
+        And the player is X
         When player makes a move at [3,3]
         Then game notifies player the square [3, 3] does not exist
         And the game does not break
         And state of game does not change
-        And the player is "X"
+        And the player is X
