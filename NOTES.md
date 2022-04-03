@@ -82,7 +82,7 @@ __Focus: Domain logic__
 - [ ] Unit test functions
     - [x] ~~`generate_board`~~
     - [x] ~~`generate_board_repr`~~
-    - [ ] `player_sign`
-    - [ ] `assess_game`
-    - [ ] `process_round`
-    - [ ] `play_game`
+    - [x] `player_sign`
+    - [x] `assess_game`
+    - [x] `process_round`
+    - [x] `play_game`
