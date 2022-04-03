@@ -1,0 +1,22 @@
+Feature: Assessing end game
+
+    Scenario: Player 1 wins
+        Given a game is in progress
+        And the current player is 1
+        And the board is [[1 , 0 , 1], [0 , -1 , -1], [0 , 0 , 0]]
+        When player makes a move at 2
+        Then the winner is 1
+
+    Scenario: Player -1 wins
+        Given a game is in progress
+        And the current player is -1
+        And the board is [[1 , 0 , 1], [0 , -1 , -1], [1 , 0 , 0]]
+        When player makes a move at 4
+        Then the winner is -1
+
+    Scenario: Game is a tie
+        Given a game is in progress
+        And the current player is -1
+        And the board is [[1 , -1 , 1], [1 , -1 , -1], [ 0 , 1 , 1]]
+        When player makes a move at 7
+        Then the winner is 0

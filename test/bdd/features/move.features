@@ -19,3 +19,5 @@ Feature: Making a move
         And the current player is 1
         When player makes a move at 12
         Then the game breaks
+
+

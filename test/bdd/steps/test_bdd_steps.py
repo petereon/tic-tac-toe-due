@@ -7,18 +7,33 @@ import json
 from expycted import expect
 
 
-@scenario("behavior.features", "Player makes an invalid move")
+@scenario("move.features", "Player makes an invalid move")
 def test_making_an_invalid_move():
     pass
 
 
-@scenario("behavior.features", "Player makes a valid move")
+@scenario("move.features", "Player makes a valid move")
 def test_making_a_valid_move():
     pass
 
 
-@scenario("behavior.features", "Player makes a move out of board")
+@scenario("move.features", "Player makes a move out of board")
 def test_making_out_of_board_move():
+    pass
+
+
+@scenario("endgame.features", "Player 1 wins")
+def test_player_1_win():
+    pass
+
+
+@scenario("endgame.features", "Player -1 wins")
+def test_player_minus_1_win():
+    pass
+
+
+@scenario("endgame.features", "Game is a tie")
+def test_game_is_a_tie():
     pass
 
 
@@ -52,6 +67,13 @@ def a_square_is_occupied(board, coord):
     return board
 
 
+@given(
+    parsers.parse("the board is {board}"), target_fixture="board", converters={"board": json.loads}
+)
+def the_board_is(board):
+    return np.array(board)
+
+
 @when(
     parsers.parse("player makes a move at {coord}"),
     target_fixture="result",
@@ -60,7 +82,7 @@ def a_square_is_occupied(board, coord):
 def a_player_makes_move_at_square(board, player, coord):
     try:
         board, game_status = process_round(board, player, coord)
-        return board, None
+        return board, game_status
     except Exception as e:
         return None, e
 
@@ -75,3 +97,8 @@ def a_square_is_occupied_by_a_player(result, coord, player):
 def the_game_breaks(result):
     expect(result[0]).to.be(None)
     expect(result[1]).to_not.be(None)
+
+
+@then(parsers.parse("the winner is {player}"))
+def the_winner_is(result, player):
+    expect(int(result[1])).to.equal(int(player))
