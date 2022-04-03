@@ -46,8 +46,8 @@ __Focus: Domain logic__
 - __April 3rd 2022__
 
 __Focus: Domain logic__
-- [ ] Implement test steps of legal move illegal move
-    - [ ] square [1,1] is occupied
-    - [ ] game notifies player the square is occupied
-    - [ ] the game does not break
-    - [ ] state of game does not change
+- [x] Implement test steps of legal move illegal move
+    - [x] square [1,1] is occupied
+- [x] Implement test steps for out of board move
+    - [x] player makes a move at [3,3]
+    - [x] the game breaks
