@@ -79,10 +79,36 @@ __Focus: Domain logic__
 - __April 3rd 2022__
 
 __Focus: Domain logic__
-- [ ] Unit test functions
+- [x] Unit test functions
     - [x] ~~`generate_board`~~
     - [x] ~~`generate_board_repr`~~
     - [x] `player_sign`
     - [x] `assess_game`
     - [x] `process_round`
     - [x] `play_game`
+
+
+Game fully covered in tests, refactor time!
+
+
+### Pomodoro 7:
+- __April 3rd 2022__
+
+__Focus: Domain logic__
+- [ ] Refactor functions to use game state
+    - [ ] `generate_board`
+    - [ ] `player_sign`
+    - [ ] `assess_game`
+    - [ ] `process_round`
+- [ ] Adjust BDD tests to reflect refactoring
+- [ ] Adjust unit tests to reflect refactoring
+
+### Pomodoro 8:
+- __April 3rd 2022__
+
+__Focus: Domain logic__
+- [ ] Move representation out of logic
+    - [ ] `generate_board`
+    - [ ] `player_sign`
+    - [ ] `assess_game`
+    - [ ] `process_round`
