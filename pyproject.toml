@@ -1,17 +1,17 @@
 [tool.poetry]
-name = "tic_tac_tue_due"
+name = "tic_tac_toe_due"
 version = "0.1.0"
 description = "Because tests should be easy to read"
 authors = ["Peter Vyboch <pvyboch1@gmail.com>"]
 license = "MIT"
-repository = 'https://github.com/petereon/tic_tac_tue_due'
+repository = 'https://github.com/petereon/tic_tac_toe_due'
 readme = 'README.md'
 keywords = ["python"]
 classifiers = [
     'License :: OSI Approved :: MIT License',
     'Programming Language :: Python :: ^3.9',
 ]
-packages = [{ include = "tic_tac_tue_due", from = "src" }]
+packages = [{ include = "tic_tac_toe_due", from = "src" }]
 
 
 [tool.poe.tasks]
@@ -26,7 +26,7 @@ lint = { shell = "poetry run mypy ." }
 
 
 install-self = { shell = "poetry run pip install ./dist/$(ls ./dist | grep .whl | tail -n 1) --force-reinstall" }
-uninstall-self = { shell = "poetry run pip uninstall tic_tac_tue_due" }
+uninstall-self = { shell = "poetry run pip uninstall tic_tac_toe_due" }
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
