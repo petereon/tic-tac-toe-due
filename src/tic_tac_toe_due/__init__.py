@@ -101,7 +101,17 @@ def assess_game(board: np.ndarray, position: int) -> int:
 
 
 def process_move(game_state: dict, move: List[int]) -> Tuple[dict, bool]:
-    pass
+    row, col = (move[0], move[1])
+    if (row >= 3) or (col >= 3):
+        game_state["msg"] = "Invalid move, provide a valid position"
+        return game_state, False
+
+    if game_state["board"][row][col] != " ":
+        game_state["msg"] = "Invalid move, position already taken"
+        return game_state, False
+
+    game_state["board"][row][col] = game_state["player"]
+    return game_state, True
 
 
 def process_round(board: np.ndarray, player, turn_position):  # eg. pick square with id 7
