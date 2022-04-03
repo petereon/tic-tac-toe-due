@@ -1,9 +1,19 @@
 import numpy as np
 import random
-from typing import Union
+from typing import List, Tuple, Union
 import time
 
 player_mapping = {"X": 1, "O": -1, 1: "X", -1: "O", " ": 0, 0: " "}
+
+
+def initialize_game():
+    state = {
+        "board": [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]],
+        "player": "X",
+        "status": None,
+        "msg": None,
+    }
+    return state
 
 
 def generate_board():
@@ -88,6 +98,10 @@ def assess_game(board: np.ndarray, position: int) -> int:
         return 0
     else:
         return None
+
+
+def process_move(game_state: dict, move: List[int]) -> Tuple[dict, bool]:
+    pass
 
 
 def process_round(board: np.ndarray, player, turn_position):  # eg. pick square with id 7
