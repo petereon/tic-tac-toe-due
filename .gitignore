@@ -5,6 +5,7 @@ poetry.lock
 __pycache__
 .pytest_cache
 .coverage
+coverage.xml
 
 # Linter artifacts
 .mypy_cache
