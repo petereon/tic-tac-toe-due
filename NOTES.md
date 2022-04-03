@@ -60,3 +60,29 @@ __Focus: Domain logic__
     - [x] the game is a draw
     - [x] player "X" wins
     - [x] player "O" wins
+
+Seems like all the desired logic in the game is now sufficiently described in the BDD tests, moving on to the unit tests to cover the remaining logic.
+
+### Pomodoro 5:
+- __April 3rd 2022__
+
+__Focus: Domain logic__
+- [ ] Unit test functions
+    - [x] `generate_board`
+    - [x] `generate_board_repr`
+    - [ ] `player_sign`
+    - [ ] `assess_game`
+    - [ ] `process_round`
+    - [ ] `play_game`
+
+### Pomodoro 6:
+- __April 3rd 2022__
+
+__Focus: Domain logic__
+- [ ] Unit test functions
+    - [x] ~~`generate_board`~~
+    - [x] ~~`generate_board_repr`~~
+    - [ ] `player_sign`
+    - [ ] `assess_game`
+    - [ ] `process_round`
+    - [ ] `play_game`
