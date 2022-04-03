@@ -35,9 +35,9 @@ jobs:
     - name: Build and install the library
       run: |
         poe build
-        poe install-self
     - name: Test with pytest
       run: |
+        export PYTHONPATH=$(pwd)/src
         poe test
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
