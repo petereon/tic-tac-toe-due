@@ -39,7 +39,6 @@ jobs:
     - name: Test with pytest
       run: |
         poe test
-    steps:
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       env:
