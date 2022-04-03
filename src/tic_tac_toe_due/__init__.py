@@ -125,4 +125,4 @@ def play_game(sleeptime=2):
 
 
 if __name__ == "__main__":
-    play_game()
+    play_game()  # pragma: no cover
