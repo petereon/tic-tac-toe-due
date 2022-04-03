@@ -51,3 +51,12 @@ __Focus: Domain logic__
 - [x] Implement test steps for out of board move
     - [x] player makes a move at [3,3]
     - [x] the game breaks
+
+### Pomodoro 4:
+- __April 3rd 2022__
+
+__Focus: Domain logic__
+- [x] Implement features for endgame
+    - [x] the game is a draw
+    - [x] player "X" wins
+    - [x] player "O" wins
