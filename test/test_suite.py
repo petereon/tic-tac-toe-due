@@ -106,7 +106,7 @@ def describe_process_move():
 
         assert new_state == state
         assert valid == False
-        assert new_state["msg"] == None
+        assert new_state["msg"] == "Invalid move, position already taken"
 
     def test_out_of_board_move_is_made(get_example_game_state):
         state = get_example_game_state
@@ -114,4 +114,4 @@ def describe_process_move():
 
         assert new_state == state
         assert valid == False
-        assert new_state["msg"] == None
+        assert new_state["msg"] == "Invalid move, provide a valid position"
