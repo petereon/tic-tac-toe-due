@@ -45,7 +45,7 @@ def player_wins(game_state: dict, player: str) -> bool:
         return True
 
     # Diagonal sinister
-    if [i + j for i, j in all_cells_taken_by_player].count(3) == 3:
+    if [i + j for i, j in all_cells_taken_by_player].count(2) == 3:
         return True
 
     return False
