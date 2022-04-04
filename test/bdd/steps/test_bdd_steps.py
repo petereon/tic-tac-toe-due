@@ -1,5 +1,5 @@
 from pytest_bdd import scenario, given, when, then, parsers
-from tic_tac_toe_due import generate_board, process_round
+from tic_tac_toe_due import initialize_game, process_round
 
 import numpy as np
 import json
@@ -22,12 +22,12 @@ def test_making_out_of_board_move():
     pass
 
 
-@scenario("endgame.features", "Player 1 wins")
+@scenario("endgame.features", "Player X wins")
 def test_player_1_win():
     pass
 
 
-@scenario("endgame.features", "Player -1 wins")
+@scenario("endgame.features", "Player O wins")
 def test_player_minus_1_win():
     pass
 
@@ -37,68 +37,76 @@ def test_game_is_a_tie():
     pass
 
 
-@given("a game is in progress", target_fixture="board")
+@given("a game is in progress", target_fixture="state")
 def game_is_in_progress():
-    return generate_board()
+    return initialize_game()
 
 
-@given(parsers.parse("the current player is {player}"), target_fixture="player")
-def the_player(player):
-    return player
+@given(parsers.parse("the current player is {player}"), target_fixture="state")
+def the_player(player,state):
+    state["player"] = player
+    return state
 
 
 @given(
     parsers.parse("square {coord} is unoccupied"),
-    target_fixture="board",
-    converters={"coord": int},
+    target_fixture="state",
+    converters={"coord": json.loads},
 )
-def a_square_is_unoccupied(board, coord):
-    row, col = divmod(coord - 1, 3)
-    board[row][col] = 0
-    return board
+def a_square_is_unoccupied(state, coord):
+    row, col = (coord[0], coord[1])
+    state['board'][row][col] = ' '
+    return state
 
 
 @given(
-    parsers.parse("square {coord} is occupied"), target_fixture="board", converters={"coord": int}
+    parsers.parse("square {coord} is occupied"), target_fixture="state", converters={"coord": json.loads}
 )
-def a_square_is_occupied(board, coord):
-    row, col = divmod(coord - 1, 3)
-    board[row][col] = 1
-    return board
+def a_square_is_occupied(state, coord):
+    row, col = (coord[0], coord[1])
+    state['board'][row][col] = 'X'
+    return state
+
 
 
 @given(
-    parsers.parse("the board is {board}"), target_fixture="board", converters={"board": json.loads}
+    parsers.parse("the board is {board}"), target_fixture="state", converters={"board": json.loads}
 )
-def the_board_is(board):
-    return np.array(board)
+def the_board_is(board, state):
+    state['board'] = board
+    return state
 
 
 @when(
     parsers.parse("player makes a move at {coord}"),
     target_fixture="result",
-    converters={"coord": int},
+    converters={"coord": json.loads},
 )
-def a_player_makes_move_at_square(board, player, coord):
-    try:
-        board, game_status = process_round(board, player, coord)
-        return board, game_status
-    except Exception as e:
-        return None, e
+def a_player_makes_move_at_square(state, coord):
+    return process_round(state, coord)
 
 
-@then(parsers.parse("square {coord} is occupied by {player}"), converters={"coord": int})
+@then("board remains unchanged")
+def board_remains_unchanged(state, result):
+    assert result == state
+
+
+@then(parsers.parse("message is {message}"))
+def message_is(message, result):
+    assert '"{}"'.format(result['msg']) == message
+
+
+@then(parsers.parse("square {coord} is occupied by {player}"), converters={"coord": json.loads})
 def a_square_is_occupied_by_a_player(result, coord, player):
-    row, col = divmod(coord - 1, 3)
-    expect(int(result[0][row][col])).to.equal(int(player))
-
-
-@then("the game breaks")
-def the_game_breaks(result):
-    expect(result[0]).to.be(None)
-    expect(result[1]).to_not.be(None)
+    row, col = (coord[0], coord[1])
+    assert result['board'][row][col] == player
 
 
 @then(parsers.parse("the winner is {player}"))
 def the_winner_is(result, player):
-    expect(int(result[1])).to.equal(int(player))
+    result['status'] = player
+
+
+@then("the game is a tie")
+def the_game_is_a_tie(result):
+    assert result['status'] == 'D'
