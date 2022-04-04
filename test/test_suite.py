@@ -1,8 +1,6 @@
 from tic_tac_toe_due import *
 import pytest
 
-from expycted import expect
-
 
 @pytest.fixture
 def get_example_game_state():
@@ -73,14 +71,14 @@ def describe_process_round():
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["X", "O", " "], [" ", " ", " "]]
         state["player"] = "X"
-        state = process_round(state, [2, 0])
+        state = process_round(state, (2, 0))
         assert state["board"] == [["X", "O", "X"], ["X", "O", " "], ["X", " ", " "]]
         assert state["status"] == "X"
 
     def test_player_minus_1_wins(get_example_game_state):
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["X", "O", " "], [" ", " ", " "]]
-        state = process_round(state, [2, 1])
+        state = process_round(state, (2, 1))
         assert state["board"] == [["X", "O", "X"], ["X", "O", " "], [" ", "O", " "]]
         assert state["status"] == "O"
 
@@ -88,7 +86,7 @@ def describe_process_round():
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["O", "X", " "], [" ", " ", " "]]
         state["player"] = "X"
-        state = process_round(state, [2, 2])
+        state = process_round(state, (2, 2))
         assert state["board"] == [["X", "O", "X"], ["O", "X", " "], [" ", " ", "X"]]
         assert state["status"] == "X"
 
@@ -96,24 +94,24 @@ def describe_process_round():
 def describe_process_move():
     def test_valid_move_is_made(get_example_game_state):
         state = get_example_game_state
-        state, valid = process_move(state, [1, 2])
+        state, valid = process_move(state, (1, 2))
 
-        expect(state["board"][1][2]).to.be_equal_to("O")
-        expect(valid).to.be_equal_to(True)
-        expect(state["msg"]).to.be_equal_to(None)
+        assert state["board"][1][2] == "O"
+        assert valid == True
+        assert state["msg"] == None
 
     def test_invalid_move_is_made(get_example_game_state):
         state = get_example_game_state
-        new_state, valid = process_move(state, [1, 1])
+        new_state, valid = process_move(state, (1, 1))
 
-        expect(new_state).to.be_equal_to(state)
-        expect(valid).to.be_equal_to(False)
-        expect(new_state["msg"]).to_not.be_equal_to(None)
+        assert new_state == state
+        assert valid == False
+        assert new_state["msg"] == None
 
     def test_out_of_board_move_is_made(get_example_game_state):
         state = get_example_game_state
-        new_state, valid = process_move(state, [5, 2])
+        new_state, valid = process_move(state, (5, 2))
 
-        expect(new_state).to.be_equal_to(state)
-        expect(valid).to.be_equal_to(False)
-        expect(new_state["msg"]).to_not.be_equal_to(None)
+        assert new_state == state
+        assert valid == False
+        assert new_state["msg"] == None

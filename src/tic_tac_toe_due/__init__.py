@@ -83,7 +83,7 @@ def process_move(
     return game_state, True
 
 
-def process_round(game_state, move_position: Union[Tuple[int, int], None] = None) -> dict:
+def process_round(game_state: dict, move_position: Union[Tuple[int, int], None] = None) -> dict:
     game_state, success = process_move(game_state, move_position)
     if success:
         game_state = assess_game(game_state)

@@ -4,8 +4,6 @@ from tic_tac_toe_due import initialize_game, process_round
 import numpy as np
 import json
 
-from expycted import expect
-
 
 @scenario("move.features", "Player makes an invalid move")
 def test_making_an_invalid_move():
