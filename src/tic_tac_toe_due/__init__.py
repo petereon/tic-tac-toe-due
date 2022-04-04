@@ -69,7 +69,7 @@ def process_move(
     game_state: dict, move_position: Union[Tuple[int, int], None] = None
 ) -> Tuple[dict, bool]:
     if move_position is None:
-        move_position = get_random_move(game_state)
+        move_position = get_random_move(game_state)  # pragma: no cover
     row, col = (move_position[0], move_position[1])
     if (row >= 3) or (col >= 3):
         game_state["msg"] = "Invalid move, provide a valid position"
@@ -92,17 +92,3 @@ def process_round(game_state, move_position: Union[Tuple[int, int], None] = None
     else:
         game_state["player"] = "X"
     return game_state
-
-
-def play_game(sleeptime=2):
-    """Put together the game"""
-    game_state = initialize_game()
-
-    while game_state["status"] is None:
-        game_state = process_round(game_state)
-        print(game_state["board"])
-        time.sleep(sleeptime)
-
-
-if __name__ == "__main__":
-    play_game()  # pragma: no cover
