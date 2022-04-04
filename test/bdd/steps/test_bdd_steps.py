@@ -43,7 +43,7 @@ def game_is_in_progress():
 
 
 @given(parsers.parse("the current player is {player}"), target_fixture="state")
-def the_player(player,state):
+def the_player(player, state):
     state["player"] = player
     return state
 
@@ -55,25 +55,26 @@ def the_player(player,state):
 )
 def a_square_is_unoccupied(state, coord):
     row, col = (coord[0], coord[1])
-    state['board'][row][col] = ' '
+    state["board"][row][col] = " "
     return state
 
 
 @given(
-    parsers.parse("square {coord} is occupied"), target_fixture="state", converters={"coord": json.loads}
+    parsers.parse("square {coord} is occupied"),
+    target_fixture="state",
+    converters={"coord": json.loads},
 )
 def a_square_is_occupied(state, coord):
     row, col = (coord[0], coord[1])
-    state['board'][row][col] = 'X'
+    state["board"][row][col] = "X"
     return state
-
 
 
 @given(
     parsers.parse("the board is {board}"), target_fixture="state", converters={"board": json.loads}
 )
 def the_board_is(board, state):
-    state['board'] = board
+    state["board"] = board
     return state
 
 
@@ -93,20 +94,20 @@ def board_remains_unchanged(state, result):
 
 @then(parsers.parse("message is {message}"))
 def message_is(message, result):
-    assert '"{}"'.format(result['msg']) == message
+    assert '"{}"'.format(result["msg"]) == message
 
 
 @then(parsers.parse("square {coord} is occupied by {player}"), converters={"coord": json.loads})
 def a_square_is_occupied_by_a_player(result, coord, player):
     row, col = (coord[0], coord[1])
-    assert result['board'][row][col] == player
+    assert result["board"][row][col] == player
 
 
 @then(parsers.parse("the winner is {player}"))
 def the_winner_is(result, player):
-    result['status'] = player
+    result["status"] = player
 
 
 @then("the game is a tie")
 def the_game_is_a_tie(result):
-    assert result['status'] == 'D'
+    assert result["status"] == "D"
