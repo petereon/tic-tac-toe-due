@@ -92,19 +92,54 @@ Game fully covered in tests, refactor time!
 
 
 ### Pomodoro 7:
-- __April 3rd 2022__
+- __April 4th 2022__
 
 __Focus: Domain logic__
-- [ ] Refactor functions to use game state
-    - [ ] `generate_board`
-    - [ ] `player_sign`
-    - [ ] `assess_game`
-    - [ ] `process_round`
+- [x] Refactor functions to use game state
+    - [x] ~~`generate_board`~~ `initialize_game`
+    - [x] ~~`player_sign`~~ `get_random_move` 
+    - [x] `assess_game`
+    - [x] `process_round`
+- [ ] Added new functions:
+    - [ ] `get_indexes`
+    - [ ] `player_wins`
+    - [ ] `process_move`
 - [ ] Adjust BDD tests to reflect refactoring
 - [ ] Adjust unit tests to reflect refactoring
 
 ### Pomodoro 8:
-- __April 3rd 2022__
+- __April 4th 2022__
+
+__Focus: Domain logic__
+- [x] Refactor functions to use game state
+    - [x] ~~`generate_board` `initialize_game`~~
+    - [x] ~~`player_sign` `get_random_move`~~
+    - [x] ~~`assess_game`~~
+    - [x] ~~`process_round`~~
+- [x] Added new functions:
+    - [x] `get_indexes`
+    - [x] `player_wins`
+    - [x] `process_move`
+- [ ] Adjust BDD tests to reflect refactoring
+- [ ] Adjust unit tests to reflect refactoring
+
+### Pomodoro 9:
+
+- __April 4th 2022__
+
+__Focus: Domain logic__
+
+Miscellanous refactoring to make functions more testable
+
+### Pomodoro 10:
+- __April 4th 2022__
+
+__Focus: Domain logic__
+- [ ] Adjust BDD tests to reflect refactoring
+- [ ] Adjust unit tests to reflect refactoring
+
+### Pomodoro 11:
+- __April 4th 2022__
 
 __Focus: Domain logic__
 - [ ] Move representation out of logic
