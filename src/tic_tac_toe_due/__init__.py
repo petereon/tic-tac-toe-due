@@ -91,7 +91,6 @@ def process_round(game_state, move_position: Union[Tuple[int, int], None] = None
     else:
         game_state['player'] = 'X'
     return game_state
-    
 
 
 def play_game(sleeptime=2):
