@@ -1,4 +1,4 @@
-from pytest_bdd import scenario, given, when, then, parsers
+from pytest_bdd import scenario, given, when, then, parsers  # type: ignore
 from tic_tac_toe_due import initialize_game, process_round
 
 import json
