@@ -164,10 +164,10 @@ __Focus: API__
 - __April 5th 2022__
 
 __Focus: API__
-- [ ] Create API
-    - [ ] GET new game endpoint
-    - [ ] POST move  endpoint
-    - [ ] GET game state endpoint
+- [x] Create API
+    - [x] GET new game endpoint
+    - [x] POST move  endpoint
+    - [x] GET game state endpoint
 
 ### Pomodoro 14:
 - __April 5th 2022__
