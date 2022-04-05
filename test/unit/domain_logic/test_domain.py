@@ -71,14 +71,14 @@ def describe_process_round():
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["X", "O", " "], [" ", " ", " "]]
         state["player"] = "X"
-        state = process_round(state, (2, 0))
+        state = process_round(state, (2, 0))[0]
         assert state["board"] == [["X", "O", "X"], ["X", "O", " "], ["X", " ", " "]]
         assert state["status"] == "X"
 
     def test_player_minus_1_wins(get_example_game_state):
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["X", "O", " "], [" ", " ", " "]]
-        state = process_round(state, (2, 1))
+        state = process_round(state, (2, 1))[0]
         assert state["board"] == [["X", "O", "X"], ["X", "O", " "], [" ", "O", " "]]
         assert state["status"] == "O"
 
@@ -86,7 +86,7 @@ def describe_process_round():
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["O", "X", " "], [" ", " ", " "]]
         state["player"] = "X"
-        state = process_round(state, (2, 2))
+        state = process_round(state, (2, 2))[0]
         assert state["board"] == [["X", "O", "X"], ["O", "X", " "], [" ", " ", "X"]]
         assert state["status"] == "X"
 

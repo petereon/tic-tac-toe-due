@@ -81,7 +81,7 @@ def the_board_is(board, state):
     converters={"coord": json.loads},
 )
 def a_player_makes_move_at_square(state, coord):
-    return process_round(state, coord)
+    return process_round(state, coord)[0]
 
 
 @then("board remains unchanged")
