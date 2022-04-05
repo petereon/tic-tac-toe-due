@@ -58,6 +58,7 @@ line-length = 100
 
 [tool.poetry.dependencies]
 python = "^3.9"
+fastapi = "^0.75.1"
 
 
 [tool.poetry.dev-dependencies]
