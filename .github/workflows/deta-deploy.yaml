@@ -20,12 +20,21 @@ jobs:
         python-version: ["3.9"]
       fail-fast: false
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0 
-    - uses: BogDAAAMN/deta-deploy-action@v1.0.1
-      with:
-        deta-access-token: ${{ secrets.DETA_TOKEN }}
-        deta-name: 'deta-deployment'
-        deta-project-dir: 'src'
+    - name: Install Deta CLI
+      shell: bash
+      run: |
+        curl -fsSL https://get.deta.dev/cli.sh | sh
+    - name: Clone Deta Metadata
+      shell: bash
+      run: |
+        export DETA_ACCESS_TOKEN=${{ secrets.DETA_TOKEN }}
+        cd src
+        ~/.deta/bin/deta clone --name deta-deployment tmp/
+        cp -r tmp/.deta .
+    - name: Deploy to Deta
+      shell: bash
+      run: |
+        export DETA_ACCESS_TOKEN=${{ secrets.DETA_TOKEN }}
+        cd src
+        ~/.deta/bin/deta deploy
 
