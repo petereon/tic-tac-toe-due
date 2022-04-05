@@ -149,3 +149,28 @@ __Focus: Domain logic__
     - [x] `player_sign`
     - [x] `assess_game`
     - [x] `process_round`
+
+
+### Pomodoro 12:
+- __April 5th 2022__
+
+__Focus: API__
+- [x] Test API
+    - [x] GET new game endpoint
+    - [x] POST move  endpoint
+    - [x] GET game state endpoint
+
+### Pomodoro 13:
+- __April 5th 2022__
+
+__Focus: API__
+- [ ] Create API
+    - [ ] GET new game endpoint
+    - [ ] POST move  endpoint
+    - [ ] GET game state endpoint
+
+### Pomodoro 14:
+- __April 5th 2022__
+
+__Focus: CLI__
+- [ ] Implement CLI from API
