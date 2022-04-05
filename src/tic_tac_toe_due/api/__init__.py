@@ -21,10 +21,10 @@ games = {}
 async def get_new_game():
     global games
     state = initialize_game()
-    id = uuid4().hex
-    games[id] = state
+    game_id = uuid4().hex
+    games[game_id] = state
 
-    return {"id": id, "state": state}
+    return {"id": game_id, "state": state}
 
 
 @app.post("/game/{game_id}/move")
