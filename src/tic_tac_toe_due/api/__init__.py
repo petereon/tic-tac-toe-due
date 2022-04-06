@@ -31,7 +31,7 @@ async def get_new_game():
 async def post_move(game_id: str, response: Response, move: Union[None, Move] = None):
     global games
     state = games[game_id]
-    state, valid = process_round(state, move.move if not move is None else move)
+    state, valid = process_round(state, move.move if move is not None else move)
     if not valid:
         response.status_code = status.HTTP_400_BAD_REQUEST
     games[game_id] = state
