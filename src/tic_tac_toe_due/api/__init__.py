@@ -28,10 +28,10 @@ async def get_new_game():
 
 
 @app.post("/game/{game_id}/move")
-async def post_move(game_id: str, move: Move, response: Response):
+async def post_move(game_id: str, response: Response, move: Union[None, Move] = None):
     global games
     state = games[game_id]
-    state, valid = process_round(state, move.move)
+    state, valid = process_round(state, move.move if not move is None else move)
     if not valid:
         response.status_code = status.HTTP_400_BAD_REQUEST
     games[game_id] = state
