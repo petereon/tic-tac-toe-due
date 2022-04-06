@@ -36,38 +36,38 @@ def get_diagonal_win_board():
     return [["O", "X", "X"], ["X", "O", " "], [" ", "O", "O"]]
 
 
-def test_get_indexes(get_example_board):
-    assert get_indexes(get_example_board, " ") == [(1, 2), (2, 0), (2, 2)]
-    assert get_indexes(get_example_board, "X") == [(0, 0), (0, 2), (1, 0)]
-    assert get_indexes(get_example_board, "O") == [(0, 1), (1, 1), (2, 1)]
+def describe_helper_functions():
+    def test_get_indexes(get_example_board):
+        assert get_indexes(get_example_board, " ") == [(1, 2), (2, 0), (2, 2)]
+        assert get_indexes(get_example_board, "X") == [(0, 0), (0, 2), (1, 0)]
+        assert get_indexes(get_example_board, "O") == [(0, 1), (1, 1), (2, 1)]
 
-
-def test_get_random_move(get_example_game_state):
-    state = get_example_game_state
-    get_random_move(state) in [(1, 2), (0, 0), (2, 0)]
+    def test_get_random_move(get_example_game_state):
+        state = get_example_game_state
+        get_random_move(state) in [(1, 2), (0, 0), (2, 0)]
 
 
 def describe_assess_game():
-    def test_player_1_wins(get_example_game_state):
+    def test_player_X_wins(get_example_game_state):
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["X", "O", " "], ["X", " ", " "]]
 
         assert assess_game(state)["status"] == "X"
 
-    def test_player_minus_1_wins(get_example_game_state):
+    def test_player_O_wins(get_example_game_state):
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["X", "O", " "], [" ", "O", " "]]
 
         assert assess_game(state)["status"] == "O"
 
-    def test_player_minus_1_diag_win(get_example_game_state):
+    def test_player_O_diag_win(get_example_game_state):
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["O", "X", " "], ["X", "O", "O"]]
         assert assess_game(state)["status"] == "X"
 
 
 def describe_process_round():
-    def test_player_1_wins(get_example_game_state):
+    def test_player_X_wins(get_example_game_state):
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["X", "O", " "], [" ", " ", " "]]
         state["player"] = "X"
@@ -75,14 +75,14 @@ def describe_process_round():
         assert state["board"] == [["X", "O", "X"], ["X", "O", " "], ["X", " ", " "]]
         assert state["status"] == "X"
 
-    def test_player_minus_1_wins(get_example_game_state):
+    def test_player_O_wins(get_example_game_state):
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["X", "O", " "], [" ", " ", " "]]
         state = process_round(state, (2, 1))[0]
         assert state["board"] == [["X", "O", "X"], ["X", "O", " "], [" ", "O", " "]]
         assert state["status"] == "O"
 
-    def test_player_minus_1_diag_win(get_example_game_state):
+    def test_player_O_diag_win(get_example_game_state):
         state = get_example_game_state
         state["board"] = [["X", "O", "X"], ["O", "X", " "], [" ", " ", " "]]
         state["player"] = "X"

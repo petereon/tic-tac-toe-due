@@ -23,24 +23,25 @@ def get_example_game_state():
     del games["1"]
 
 
-def test_get_new_game(client: TestClient):
-    ids = []
-    for i in range(10):
-        response = client.get("/game/new_game")
-        assert response.status_code == 200
-        state = response.json()
-        ids.append(state["id"])
-        del state["id"]
+def describe_get_new_game():
+    def test_get_new_game(client: TestClient):
+        ids = []
+        for i in range(10):
+            response = client.get("/game/new_game")
+            assert response.status_code == 200
+            state = response.json()
+            ids.append(state["id"])
+            del state["id"]
 
-        assert state == {
-            "state": {
-                "board": [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]],
-                "player": "X",
-                "status": None,
-                "msg": None,
-            },
-        }
-    assert len(ids) == len(set(ids))
+            assert state == {
+                "state": {
+                    "board": [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]],
+                    "player": "X",
+                    "status": None,
+                    "msg": None,
+                },
+            }
+        assert len(ids) == len(set(ids))
 
 
 def describe_post_move():
@@ -76,7 +77,7 @@ def describe_post_move():
 
 
 def describe_get_state():
-    def valid_state_id(client: TestClient, get_example_game_state: dict):
+    def valid_game_id(client: TestClient, get_example_game_state: dict):
         response = client.get(f"/game/{get_example_game_state}/state")
         assert response.status_code == 200
         assert response.json() == {
