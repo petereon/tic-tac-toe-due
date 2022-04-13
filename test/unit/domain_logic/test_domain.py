@@ -44,7 +44,7 @@ def describe_helper_functions():
 
     def test_get_random_move(get_example_game_state):
         state = get_example_game_state
-        get_random_move(state) in [(1, 2), (0, 0), (2, 0)]
+        move.get_random_move(state) in [(1, 2), (0, 0), (2, 0)]
 
 
 def describe_assess_game():
